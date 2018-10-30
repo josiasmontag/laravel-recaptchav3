@@ -1,0 +1,48 @@
+{
+    "name": "josiasmontag/laravel-recaptchav3",
+    "description": "Recaptcha V3 for Laravel package",
+    "keywords": ["captcha", "recaptcha", "laravel", "php"],
+    "homepage": "https://github.com/josiasmontag/laravel-recaptchav3",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josias Montag",
+            "email": "josias@montag.info"
+        }
+    ],
+    "require": {
+        "php" : ">=7.1.0",
+        "illuminate/container": "~5.7.0",
+        "illuminate/support": "~5.7.0",
+        "illuminate/http": "~5.7.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.2|^7.0",
+        "orchestra/testbench": "~3.7.0",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lunaweb\\RecaptchaV3\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lunaweb\\RecaptchaV3\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "phpunit": "vendor/phpunit/phpunit/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lunaweb\\RecaptchaV3\\Providers\\RecaptchaV3ServiceProvider"
+            ],
+            "aliases": {
+                "RecaptchaV3": "Lunaweb\\RecaptchaV3\\Facades\\RecaptchaV3"
+            }
+        }
+    }
+}
