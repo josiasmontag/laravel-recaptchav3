@@ -18,7 +18,7 @@ class RecaptchaV3ServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
 
     /**
      * Bootstrap the application services.
