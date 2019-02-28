@@ -13,12 +13,6 @@ use Lunaweb\RecaptchaV3\Facades\RecaptchaV3 as RecaptchaV3Facade;
 
 class RecaptchaV3ServiceProvider extends ServiceProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
 
     /**
      * Bootstrap the application services.
