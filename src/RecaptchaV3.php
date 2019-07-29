@@ -36,15 +36,22 @@ class RecaptchaV3
     protected $request;
 
     /**
+     * @var bool
+     */
+    protected $hidden;
+
+    /**
      * RecaptchaV3 constructor.
      *
      * @param $secret
      * @param $sitekey
+     * @param $hidden
      */
     public function __construct(Repository $config, Client $client, Request $request)
     {
         $this->secret = $config['recaptchav3']['secret'];
         $this->sitekey = $config['recaptchav3']['sitekey'];
+        $this->hidden = $config['recaptchav3']['hidden'];
         $this->http = $client;
         $this->request = $request;
     }
@@ -98,7 +105,9 @@ class RecaptchaV3
      */
     public function initJs()
     {
-        return '<script src="https://www.google.com/recaptcha/api.js?render=' . $this->sitekey . '"></script>';
+        $html = '<script src="https://www.google.com/recaptcha/api.js?render=' . $this->sitekey . '"></script>';
+        if($this->hidden) $html .='<style>.grecaptcha-badge { visibility:hidden; }</style>';
+        return $html;
     }
 
 
@@ -109,6 +118,7 @@ class RecaptchaV3
     {
         $fieldId = uniqid($name . '-', false);
         $html = '<input type="hidden" name="' . $name . '" id="' . $fieldId . '">';
+        if($this->hidden) $html .= "<style>.grecaptcha-badge { visibility: visible !important; }</style>";
         $html .= "<script>
   grecaptcha.ready(function() {
       grecaptcha.execute('" . $this->sitekey . "', {action: '" . $action . "'}).then(function(token) {
