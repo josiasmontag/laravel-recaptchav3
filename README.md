@@ -27,7 +27,7 @@ RECAPTCHAV3_SECRET=secret
 
 Optionally, you can publish the config file:
 ```
-php artisan vendor:publish --provider="Lunaweb\RecaptchaV3\RecaptchaV3ServiceProvider"
+php artisan vendor:publish --provider="Lunaweb\RecaptchaV3\Providers\RecaptchaV3ServiceProvider"
 ```
 
 ## Usage
@@ -77,6 +77,18 @@ if($score > 0.7) {
 } else {
     return abort(400, 'You are most likely a bot');
 }
+```
+
+#### Custom validation error message
+
+Add the following values to the `custom` array in the `validation` language file:
+
+```php
+'custom' => [
+    'g-recaptcha-response' => [
+        'recaptchav3' => 'Captcha error message',
+    ],
+],
 ```
 
 #### Testing
