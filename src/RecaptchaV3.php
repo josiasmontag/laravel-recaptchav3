@@ -15,8 +15,6 @@ use Illuminate\Contracts\Config\Repository;
 class RecaptchaV3
 {
 
-    const VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
-
     /**
      * @var string
      */
@@ -25,6 +23,10 @@ class RecaptchaV3
      * @var string
      */
     protected $sitekey;
+    /**
+     * @var string
+     */
+    protected $origin;
     /**
      * @var \GuzzleHttp\Client
      */
@@ -45,6 +47,7 @@ class RecaptchaV3
     {
         $this->secret = $config['recaptchav3']['secret'];
         $this->sitekey = $config['recaptchav3']['sitekey'];
+        $this->origin = $config['recaptchav3']['origin'] ?? 'https://www.google.com/recaptcha';
         $this->http = $client;
         $this->request = $request;
     }
@@ -60,7 +63,7 @@ class RecaptchaV3
     public function verify($token, $action = null)
     {
 
-        $response = $this->http->request('POST', static::VERIFY_URL, [
+        $response = $this->http->request('POST', $this->origin . '/api/siteverify', [
             'form_params' => [
                 'secret'   => $this->secret,
                 'response' => $token,
@@ -98,7 +101,7 @@ class RecaptchaV3
      */
     public function initJs()
     {
-        return '<script src="https://www.google.com/recaptcha/api.js?render=' . $this->sitekey . '"></script>';
+        return '<script src="' . $this->origin . '/api.js?render=' . $this->sitekey . '"></script>';
     }
 
 
