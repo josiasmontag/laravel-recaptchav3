@@ -122,9 +122,9 @@ class RecaptchaV3
 
     if (typeof refreshGoogleCaptcha === \"undefined\") {
       // safe to use the function
-      function refreshGoogleCaptcha (action) {
+      function refreshGoogleCaptcha (fieldId, action) {
           grecaptcha.execute('" . $this->sitekey . "', {action: action}).then(function(token) {
-             document.getElementById('" . $fieldId . "').value = token;
+             document.getElementById(fieldId).value = token;
           });
       }
     }
