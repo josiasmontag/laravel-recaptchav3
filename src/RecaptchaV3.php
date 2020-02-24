@@ -104,20 +104,30 @@ class RecaptchaV3
         return '<script src="' . $this->origin . '/api.js?render=' . $this->sitekey . '"></script>';
     }
 
-
     /**
      * @param $action
+     * @param string $name
+     * @return string
      */
     public function field($action, $name = 'g-recaptcha-response')
     {
         $fieldId = uniqid($name . '-', false);
         $html = '<input type="hidden" name="' . $name . '" id="' . $fieldId . '">';
         $html .= "<script>
-  grecaptcha.ready(function() {
+    grecaptcha.ready(function() {
       grecaptcha.execute('" . $this->sitekey . "', {action: '" . $action . "'}).then(function(token) {
          document.getElementById('" . $fieldId . "').value = token;
       });
-  });
+    });
+
+    if (typeof refreshGoogleCaptcha === \"undefined\") {
+      // safe to use the function
+      function refreshGoogleCaptcha (action) {
+          grecaptcha.execute('" . $this->sitekey . "', {action: action}).then(function(token) {
+             document.getElementById('" . $fieldId . "').value = token;
+          });
+      }
+    }
   </script>";
         return $html;
     }
