@@ -91,6 +91,13 @@ Add the following values to the `custom` array in the `validation` language file
 ],
 ```
 
+#### Hiding the ReCAPTCHA Badge
+
+Add to your CSS file:
+```css
+.grecaptcha-badge { visibility: visible !important; }
+```
+
 #### Testing
 
 To make your forms testable, you can mock the `RecaptchaV3` facade:
