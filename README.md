@@ -95,7 +95,7 @@ Add the following values to the `custom` array in the `validation` language file
 
 Add to your CSS file:
 ```css
-.grecaptcha-badge { visibility: visible !important; }
+.grecaptcha-badge { visibility: hidden !important; }
 ```
 
 #### Testing
