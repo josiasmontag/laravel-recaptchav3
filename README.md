@@ -8,7 +8,7 @@
 <a href="https://packagist.org/packages/josiasmontag/laravel-recaptchav3"><img src="https://poser.pugx.org/josiasmontag/laravel-recaptchav3/license.svg" alt="License"></a>
 </p>
 
-Laravel package for Google's [Recaptcha V3](https://developers.google.com/recaptcha/docs/v3).
+Laravel package for Google's [Recaptcha V3](https://developers.google.com/recaptcha/docs/v3). This is a lightweight package which focuses on the backend validation of Recaptcha V3 captchas.
 
 ## Installation
 
