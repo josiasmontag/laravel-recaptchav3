@@ -2,7 +2,7 @@
 
 
 <p align="center">
-<a href="https://travis-ci.org/josiasmontag/laravel-recaptchav3"><img src="https://travis-ci.org/josiasmontag/laravel-recaptchav3.svg" alt="Build Status"></a>
+<a href="https://github.com/josiasmontag/laravel-recaptchav3/actions/workflows/run-tests.yml"><img src="https://github.com/josiasmontag/laravel-recaptchav3/actions/workflows/run-tests.yml/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/josiasmontag/laravel-recaptchav3"><img src="https://poser.pugx.org/josiasmontag/laravel-recaptchav3/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/josiasmontag/laravel-recaptchav3"><img src="https://poser.pugx.org/josiasmontag/laravel-recaptchav3/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/josiasmontag/laravel-recaptchav3"><img src="https://poser.pugx.org/josiasmontag/laravel-recaptchav3/license.svg" alt="License"></a>
