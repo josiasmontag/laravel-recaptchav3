@@ -68,6 +68,8 @@ $validate = Validator::make(Input::all(), [
 Alternatively, you can get the score and take variable action:
 
 ```php
+// Import the facade class
+use Lunaweb\RecaptchaV3\Facade\RecaptchaV3;
 //  RecaptchaV3::verify($token, $action)
 $score = RecaptchaV3::verify($request->get('g-recaptcha-response'), 'register')
 if($score > 0.7) {
