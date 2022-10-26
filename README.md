@@ -100,6 +100,12 @@ Add to your CSS file:
 .grecaptcha-badge { visibility: hidden !important; }
 ```
 
+#### Localization
+By default, the package follows the default application locale, which is defined in `config/app.php`. If you want to change this behavior, you can specify what locale to use by adding a new environment variable : 
+```
+RECAPTCHAV3_LOCALE=ar
+```
+
 #### Testing
 
 To make your forms testable, you can mock the `RecaptchaV3` facade:
