@@ -11,6 +11,7 @@ namespace Lunaweb\RecaptchaV3;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Foundation\Application;
 
 class RecaptchaV3
 {
@@ -28,6 +29,10 @@ class RecaptchaV3
      */
     protected $origin;
     /**
+     * @var string
+     */
+    protected $locale;
+    /**
      * @var \GuzzleHttp\Client
      */
     protected $http;
@@ -43,11 +48,12 @@ class RecaptchaV3
      * @param $secret
      * @param $sitekey
      */
-    public function __construct(Repository $config, Client $client, Request $request)
+    public function __construct(Repository $config, Client $client, Request $request, Application $app)
     {
         $this->secret = $config['recaptchav3']['secret'];
         $this->sitekey = $config['recaptchav3']['sitekey'];
         $this->origin = $config['recaptchav3']['origin'] ?? 'https://www.google.com/recaptcha';
+        $this->locale = $config['recaptchav3']['locale'] ?? $app->getLocale();
         $this->http = $client;
         $this->request = $request;
     }
@@ -101,7 +107,7 @@ class RecaptchaV3
      */
     public function initJs()
     {
-        return '<script src="' . $this->origin . '/api.js?render=' . $this->sitekey . '"></script>';
+        return '<script src="' . $this->origin . '/api.js?hl=' . $this->locale . '&render=' . $this->sitekey . '"></script>';
     }
 
 
