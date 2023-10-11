@@ -58,7 +58,7 @@ Please note if the user is on the page for too long, when they submit the form, 
 To get around this please use the following code:
 ```
 <form id="my-form" method="post" action="/register">
-	{!! RecaptchaV3::field('register') !!}
+    {!! RecaptchaV3::field('register') !!}
     {!! RecaptchaV3::field('register', 'g-recaptcha-response', true, 'my-form') !!}
     <input type="submit" value="Register"></input>
 </form>
