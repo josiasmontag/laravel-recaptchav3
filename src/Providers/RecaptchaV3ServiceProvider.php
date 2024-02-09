@@ -36,7 +36,9 @@ class RecaptchaV3ServiceProvider extends ServiceProvider
             return $score && $score >= $minScore;
         });
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'recaptchav3');
-
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/recaptchav3'),
+        ]);
     }
 
     /**
