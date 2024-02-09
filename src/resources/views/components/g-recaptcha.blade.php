@@ -7,7 +7,7 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('gRecaptcha', () => {
             return ({
-                gRecaptchaResponse: @entangle($attributes->wire('model')), //array
+                gRecaptchaResponse: @entangle($attributes->wire('model')),
                 getResponseToken() {
                     let self= this;
                     grecaptcha.execute(@js(config('recaptchav3.sitekey')), {action: '{{$action}}'}).then(function(token) {
