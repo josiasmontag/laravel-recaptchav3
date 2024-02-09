@@ -7,6 +7,7 @@
 
 namespace Lunaweb\RecaptchaV3\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Lunaweb\RecaptchaV3\RecaptchaV3;
 use Lunaweb\RecaptchaV3\Facades\RecaptchaV3 as RecaptchaV3Facade;
@@ -34,6 +35,7 @@ class RecaptchaV3ServiceProvider extends ServiceProvider
             $score = RecaptchaV3Facade::verify($value, $action);
             return $score && $score >= $minScore;
         });
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'recaptchav3');
 
     }
 
