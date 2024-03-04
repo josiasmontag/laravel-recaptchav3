@@ -4,3 +4,4 @@ composer.lock
 .idea
 .project
 .phpunit.result.cache
+.phpunit.cache
