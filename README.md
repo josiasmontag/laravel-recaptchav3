@@ -52,7 +52,12 @@ Recaptcha v3 works best when it is loaded on every page to get the most context 
 </form>
 
 ```
+#### Livewire
+`` <x-recaptchav3::g-recaptcha></x-recaptchav3::g-recaptcha>`` can be used to bind your livewire model to the recaptcha response.
 
+```html
+ <x-recaptchav3::g-recaptcha :action="'register'" wire:model="gRecaptchaResponse"></x-recaptchav3::g-recaptcha>
+```
 #### Validation
 
 Add the `recaptchav3` validator to the rules array. The rule accepts two parameters: The `action` name and the minimum required `score` (defaults to 0.5).
