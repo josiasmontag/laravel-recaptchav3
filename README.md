@@ -53,6 +53,19 @@ Recaptcha v3 works best when it is loaded on every page to get the most context 
 
 ```
 
+Please note if the user is on the page for too long, when they submit the form, there will be a timeout and the reCAPTCHA will not validate.
+
+To get around this please use the following code:
+```
+<form id="my-form" method="post" action="/register">
+    {!! RecaptchaV3::field('register') !!}
+    {!! RecaptchaV3::field('register', 'g-recaptcha-response', true, 'my-form') !!}
+    <input type="submit" value="Register"></input>
+</form>
+```
+
+In this case the request to get the reCAPTCHA token will be made when the user submits the form, avoiding the timeout.
+
 #### Validation
 
 Add the `recaptchav3` validator to the rules array. The rule accepts two parameters: The `action` name and the minimum required `score` (defaults to 0.5).
